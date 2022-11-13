@@ -6,6 +6,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <h1>In the name of Allah.</h1>
+        <input type="text"/>
         <input type="submit" value="Submit"/>
           
       </header>
