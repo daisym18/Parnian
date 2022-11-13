@@ -8,6 +8,7 @@ function App() {
         <h1>In the name of Allah.</h1>
         <label>Input Data</label>
         <input type="text"/>
+        <input type="radio"/>
         <input type="submit" value="Submit"/>
           
       </header>
