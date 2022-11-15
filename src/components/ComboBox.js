@@ -6,6 +6,8 @@ export default function ComboBox() {
     return (
         <Autocomplete
             disablePortal
+            
+            multiple
             id="combo-box-demo"
             options={top100Films}
             sx={{ width: 300 }}

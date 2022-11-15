@@ -4,6 +4,8 @@ import './App.css';
 import Todos from './components/Todos';
 import { useState, useCallback } from "react";
 import ComboBox from './components/ComboBox';
+import MultiSelect from './components/MultiSelect'
+import Tags from './components/Tags'
 
 
 function App() {
@@ -24,7 +26,9 @@ function App() {
       <header className="App-header">
         <h1>In the name of Allah.</h1>
         <ComboBox />
-        <Todos todos={todos} addTodo={addTodo} />
+        <Tags/>
+        {/* <MultiSelect/> */}
+        {/* <Todos todos={todos} addTodo={addTodo} /> */}
 
         <hr />
         <div>
