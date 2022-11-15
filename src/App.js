@@ -3,6 +3,7 @@ import './App.css';
 
 import Todos from './components/Todos';
 import { useState, useCallback } from "react";
+import ComboBox from './components/ComboBox';
 
 
 function App() {
@@ -13,7 +14,7 @@ function App() {
   const increment = () => {
     setCount((c) => c + 1);
   };
-  
+
   const addTodo = useCallback(() => {
     setTodos((t) => [...t, "New Todo"]);
   }, [todos]);
@@ -22,7 +23,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <h1>In the name of Allah.</h1>
-
+        <ComboBox />
         <Todos todos={todos} addTodo={addTodo} />
 
         <hr />
