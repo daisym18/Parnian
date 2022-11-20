@@ -1,18 +1,73 @@
-import * as React from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import Chip from '@mui/material/Chip';
 import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
 import Stack from '@mui/material/Stack';
+import axios from 'axios';
+import { Button } from '@mui/material';
 
 export default function Tags() {
+
+    const [colors, setColors] = useState([])
+    const [open, setOpen] = useState(false);
+    const [options, setOptions] = useState([]);
+    const loading = open && options.length === 0;
+    const [value, setValue] = useState();
+    const [inputValue, setInputValue] = useState('');
+
+
+    useEffect(() => {
+        console.log('I entered.')
+        let active = true;
+
+        if (!loading) {
+            return undefined;
+        }
+
+        (async () => {
+            console.log("here i am");
+            const config = {
+                method: 'post',
+                url: 'http://loalhost/getColors',
+            };
+
+            axios(config)
+                .then(function (response) {
+                    response.data = response.data.filter((color) => color.title)
+                    if (active) {
+                        console.log('response,data');
+                        console.log(response.data);
+                        setOptions([...response.data]);
+                    } else { console.log("It is not active."); }
+
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+
+
+        })();
+
+        return () => {
+            active = false;
+        };
+    }, [loading]);
+
+    useEffect(() => {
+        if (!open) {
+            setOptions([]);
+        }
+    }, [open]);
+
     return (
         <Stack spacing={3} sx={{ width: 500 }}>
+            {/* <Button onClick={getMeColors}></Button> */}
             <Autocomplete
                 multiple
                 id="tags-standard"
-                options={top100Films}
+                options={options}
                 getOptionLabel={(option) => option.title}
-                defaultValue={[top100Films[13]]}
+                // defaultValue={[top100Films[13]]}
                 renderInput={(params) => (
                     <TextField
                         {...params}
@@ -25,9 +80,17 @@ export default function Tags() {
             <Autocomplete
                 multiple
                 id="tags-outlined"
-                options={top100Films}
+                options={options}
                 getOptionLabel={(option) => option.title}
-                defaultValue={[top100Films[13]]}
+                // defaultValue={[]}
+                value={value}
+                onChange={(event, newValue) => {
+                    setValue(newValue);
+                }}
+                inputValue={inputValue}
+                onInputChange={(event, newInputValue) => {
+                    setInputValue(newInputValue);
+                }}
                 filterSelectedOptions
                 renderInput={(params) => (
                     <TextField
@@ -57,19 +120,14 @@ export default function Tags() {
                     />
                 )}
             />
-            <Autocomplete
-                multiple
-                id="tags-readOnly"
-                options={top100Films.map((option) => option.title)}
-                defaultValue={[top100Films[12].title, top100Films[13].title]}
-                readOnly
-                renderInput={(params) => (
-                    <TextField {...params} label="readOnly" placeholder="Favorites" />
-                )}
-            />
+           
         </Stack>
     );
 }
+
+
+
+
 
 // Top 100 films as rated by IMDb users. http://www.imdb.com/chart/top
 const top100Films = [

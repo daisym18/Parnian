@@ -6,35 +6,47 @@ import { useState, useCallback } from "react";
 import ComboBox from './components/ComboBox';
 import MultiSelect from './components/MultiSelect'
 import Tags from './components/Tags'
+import SubmitForm from './components/SubmitForm'
+import IndividualAutoComplete from './components/IndividualAutoComplete'
 
 
 function App() {
 
-  const [count, setCount] = useState(0);
-  const [todos, setTodos] = useState([]);
+  // const [count, setCount] = useState(0);
+  // const [todos, setTodos] = useState([]);
 
-  const increment = () => {
-    setCount((c) => c + 1);
-  };
+  // const increment = () => {
+  //   setCount((c) => c + 1);
+  // };
 
-  const addTodo = useCallback(() => {
-    setTodos((t) => [...t, "New Todo"]);
-  }, [todos]);
+  // const addTodo = useCallback(() => {
+  //   setTodos((t) => [...t, "New Todo"]);
+  // }, [todos]);
+
+  const onChangeValueFunction = useCallback((colorName) => { console.log(colorName); }, [])
 
   return (
     <div className="App">
       <header className="App-header">
         <h1>In the name of Allah.</h1>
-        <ComboBox />
-        <Tags/>
-        {/* <MultiSelect/> */}
-        {/* <Todos todos={todos} addTodo={addTodo} /> */}
+        <IndividualAutoComplete
+          baseURL={"http://localhost:5000/getColors"}
+          onChangeValueFunction={onChangeValueFunction}
+        />
 
         <hr />
-        <div>
+
+        <MultiSelect
+          baseURL={"http://localhost:5000/getColors"}
+          onChangeValueFunction={onChangeValueFunction}
+        />
+        {/* <Todos todos={todos} addTodo={addTodo} /> */}
+
+        {/* <hr /> */}
+        {/* <div>
           Count: {count}
           <button onClick={increment}>+</button>
-        </div>
+        </div> */}
 
         {/* <RenderCount /> */}
 

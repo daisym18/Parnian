@@ -6,7 +6,7 @@ export default function ComboBox() {
     return (
         <Autocomplete
             disablePortal
-            
+            filterOptions={() => {}}
             multiple
             id="combo-box-demo"
             options={top100Films}
