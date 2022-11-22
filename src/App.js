@@ -1,13 +1,14 @@
 
 import './App.css';
 
-import Todos from './components/Todos';
+// import Todos from './components/Todos';
 import { useState, useCallback } from "react";
-import ComboBox from './components/ComboBox';
+// import ComboBox from './code-samples/ComboBox';
 import MultiSelect from './components/MultiSelect'
-import Tags from './components/Tags'
-import SubmitForm from './components/SubmitForm'
+// import Tags from './components/Tags'
+// import SubmitForm from './components/SubmitForm'
 import IndividualAutoComplete from './components/IndividualAutoComplete'
+import CustomDataTable from './components/CustomDataTable'
 
 
 function App() {
@@ -40,6 +41,8 @@ function App() {
           baseURL={"http://localhost:5000/getColors"}
           onChangeValueFunction={onChangeValueFunction}
         />
+
+        <CustomDataTable />
         {/* <Todos todos={todos} addTodo={addTodo} /> */}
 
         {/* <hr /> */}

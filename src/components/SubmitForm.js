@@ -50,9 +50,7 @@ export default function SubmitForm() {
                     console.log(response.data);
                     if (active) {
                         setData(response.data);
-                        console.log('data when active is true.');
-                        console.log(data);
-                    } else { console.log("This is not active."); }
+                        }
                 })
                 .catch(function (error) {
                     console.log(error);
@@ -128,8 +126,7 @@ export default function SubmitForm() {
                     value={value}
 
                     isOptionEqualToValue={(option, value) => {
-                        console.log('option in isOptionEqualToValue ---> ');
-                        console.log(option);
+                    
                         return option.title === value.title
                     }}
                     onChange={(event, newValue) => {
