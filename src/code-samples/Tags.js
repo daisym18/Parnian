@@ -3,7 +3,7 @@ import Chip from '@mui/material/Chip';
 import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
 import Stack from '@mui/material/Stack';
-import axios from 'axios';
+
 import { Button } from '@mui/material';
 
 export default function Tags() {
@@ -120,7 +120,7 @@ export default function Tags() {
                     />
                 )}
             />
-           
+
         </Stack>
     );
 }

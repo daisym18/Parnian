@@ -14,6 +14,7 @@ export default function CustomDataTable() {
         <Box sx={{ height: 520, width: '100%' }}>
             <DataGridPro
                 {...data}
+                pagination
                 loading={data.rows.length === 0}
                 rowHeight={38}
                 checkboxSelection

@@ -3,7 +3,8 @@ import { useState, useEffect } from 'react';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import CircularProgress from '@mui/material/CircularProgress';
-import axios from 'axios';
+const axios = require('axios');
+
 
 
 export default function IndividualAutoComplete({ baseURL, onChangeValueFunction }) {
